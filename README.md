@@ -123,7 +123,7 @@ NightWatch enforces three application roles defined in the Azure AD Enterprise A
 
 **Backend enforcement:** API controllers use `[Authorize(Policy = "NightWatchOperator")]` or `[Authorize(Policy = "NightWatchAdmin")]` on write endpoints. All read endpoints use `[Authorize(Policy = "PlatformReader")]` which allows any valid NightWatch role.
 
-> If no role is assigned to a user, the system falls back to `NightWatch.Admin` during the transition period.
+> If no role is assigned to a user, the system falls back to `NightWatch.Reader`.
 
 ---
 

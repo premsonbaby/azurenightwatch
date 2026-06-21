@@ -12,9 +12,9 @@ interface RoleContextValue {
 }
 
 const RoleContext = createContext<RoleContextValue>({
-  role: 'NightWatch.Admin',
-  isOperator: true,
-  isAdmin: true,
+  role: 'NightWatch.Reader',
+  isOperator: false,
+  isAdmin: false,
 });
 
 function RoleProviderInner({ children }: { children: ReactNode }) {
@@ -33,9 +33,8 @@ function RoleProviderInner({ children }: { children: ReactNode }) {
     } else if (roles.includes('NightWatch.Reader')) {
       role = 'NightWatch.Reader';
     } else {
-      // No NightWatch role assigned — grant full access during the transition
-      // period so existing MSP operators aren't locked out before roles are assigned.
-      role = 'NightWatch.Admin';
+      // No NightWatch role assigned — default to read-only access.
+      role = 'NightWatch.Reader';
     }
 
     return {
