@@ -1,0 +1,28 @@
+// VM CPU anomaly baseline
+Perf
+| where ObjectName == 'Processor' and CounterName == '% Processor Time'
+| summarize avgCpu = avg(CounterValue), p95Cpu = percentile(CounterValue, 95) by bin(TimeGenerated, 1h), Computer
+| where p95Cpu > 85 or avgCpu < 10
+| project TimeGenerated, Computer, avgCpu, p95Cpu
+
+// Disk latency spikes
+Perf
+| where ObjectName == 'LogicalDisk' and CounterName == 'Avg. Disk sec/Read'
+| summarize p95ReadLatency = percentile(CounterValue, 95) by Computer, bin(TimeGenerated, 1h)
+| where p95ReadLatency > 0.02
+| project TimeGenerated, Computer, p95ReadLatency
+
+// Application failures trend
+AppRequests
+| where Success == false
+| summarize FailedRequests = count() by bin(TimeGenerated, 1h), AppRoleName
+| order by TimeGenerated asc
+
+// Defender alerts joined with activity logs for what-changed correlation
+SecurityAlert
+| project AlertName, CompromisedEntity, TimeGenerated
+| join kind=leftouter (
+    AzureActivity
+    | project ActivityTime = TimeGenerated, OperationName, ResourceGroup, Caller
+) on $left.CompromisedEntity == $right.ResourceGroup
+| project AlertName, CompromisedEntity, TimeGenerated, OperationName, Caller

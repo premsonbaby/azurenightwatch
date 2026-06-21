@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/backend/">
+    <Project Path="src/backend/NightWatch.Api/NightWatch.Api.csproj" />
+    <Project Path="src/backend/NightWatch.Application/NightWatch.Application.csproj" />
+    <Project Path="src/backend/NightWatch.Domain/NightWatch.Domain.csproj" />
+    <Project Path="src/backend/NightWatch.Infrastructure/NightWatch.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/NightWatch.Api.Tests/NightWatch.Api.Tests.csproj" />
+  </Folder>
+</Solution>

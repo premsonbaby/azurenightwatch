@@ -1,0 +1,1294 @@
+<Events><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:07:44Z"/><EventRecordID>483973093</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: d2055daafbafab3d
+TraceId: 949c2521ac3b24747aeab711e9797672
+ParentId: 0000000000000000
+RequestId: 40000c99-0003-f900-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 9dae6f03-36a7-4be0-b9dd-b9b4958dc061
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:07:44.0919186Z, correlationId = 26a2e2ee-9bb7-45a9-a16e-83c282f95c1b.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"ParserFailure","message":"ParserFailure"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:07:44Z"/><EventRecordID>483973140</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: d2055daafbafab3d
+TraceId: 949c2521ac3b24747aeab711e9797672
+ParentId: 0000000000000000
+RequestId: 40000c99-0003-f900-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 9dae6f03-36a7-4be0-b9dd-b9b4958dc061
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:07:44.1383062Z, correlationId = dcdbf656-501e-466a-8974-84bd19ae4fe0.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"UnknownFunction","message":"Unknown function: 'bag_length'."},{"code":"Default","message":"Filter expression should be Boolean"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:07:56Z"/><EventRecordID>483985328</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Database.Connection
+EventId: 20004
+SpanId: badb1bafb4bc22d1
+TraceId: d3667119805ad95d263212ec91eb8138
+ParentId: 0000000000000000
+RequestId: 40000551-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 269a7236-71fa-4f13-8e7a-55f07572388f
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+An error occurred using the connection to database 'nightwatchdb' on server 'tcp:eun-p-nightwatch-sqlsrv..database.windows.net,1433'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:07:56Z"/><EventRecordID>483985328</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Query
+EventId: 10100
+SpanId: badb1bafb4bc22d1
+TraceId: d3667119805ad95d263212ec91eb8138
+ParentId: 0000000000000000
+RequestId: 40000551-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 269a7236-71fa-4f13-8e7a-55f07572388f
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+An exception occurred while iterating over the results of a query for context type 'NightWatch.Infrastructure.Persistence.NightWatchDbContext'.
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---&gt; Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+ ---&gt; System.ComponentModel.Win32Exception (11001): No such host is known.
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:11001,State:0,Class:20
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+
+Exception: 
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---&gt; Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+ ---&gt; System.ComponentModel.Win32Exception (11001): No such host is known.
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:11001,State:0,Class:20
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:07:56Z"/><EventRecordID>483985343</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer
+EventId: 2
+SpanId: badb1bafb4bc22d1
+TraceId: d3667119805ad95d263212ec91eb8138
+ParentId: 0000000000000000
+RequestId: 40000551-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+
+Connection ID "17798225736763442499", Request ID "40000551-0002-f700-b63f-84710c7967bb": An unhandled exception was thrown by the application.
+
+Exception: 
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---&gt; Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+ ---&gt; System.ComponentModel.Win32Exception (11001): No such host is known.
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:11001,State:0,Class:20
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout(String tenantId, ExecutiveLayoutUpdateRequest request, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Api\Controllers\ExecutiveLayoutController.cs:line 51
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeInnerFilterAsync&gt;g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:08:14Z"/><EventRecordID>484004000</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: 6832c51483e9485c
+TraceId: 11b2ce1cb15dc1e0e8b31cd4569dcfe7
+ParentId: 0000000000000000
+RequestId: 40000c9b-0003-f900-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 9dae6f03-36a7-4be0-b9dd-b9b4958dc061
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:08:14.9893037Z, correlationId = 55a7221c-7d77-43ad-ac97-dd8dc941ef5b.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"UnknownFunction","message":"Unknown function: 'bag_length'."},{"code":"Default","message":"Filter expression should be Boolean"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:08:14Z"/><EventRecordID>484004000</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: 6832c51483e9485c
+TraceId: 11b2ce1cb15dc1e0e8b31cd4569dcfe7
+ParentId: 0000000000000000
+RequestId: 40000c9b-0003-f900-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 9dae6f03-36a7-4be0-b9dd-b9b4958dc061
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:08:15.0006930Z, correlationId = c647825d-5c50-4249-b185-c6a340427dce.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"ParserFailure","message":"ParserFailure"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:08:26Z"/><EventRecordID>484015296</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Database.Connection
+EventId: 20004
+SpanId: 1360ecb66b6942dd
+TraceId: 87d5a6f34cc922b797f24e6cc9fc6b6c
+ParentId: 0000000000000000
+RequestId: 400005fa-0007-f400-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 269a7236-71fa-4f13-8e7a-55f07572388f
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+An error occurred using the connection to database 'nightwatchdb' on server 'tcp:eun-p-nightwatch-sqlsrv..database.windows.net,1433'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:08:26Z"/><EventRecordID>484015296</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Query
+EventId: 10100
+SpanId: 1360ecb66b6942dd
+TraceId: 87d5a6f34cc922b797f24e6cc9fc6b6c
+ParentId: 0000000000000000
+RequestId: 400005fa-0007-f400-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 269a7236-71fa-4f13-8e7a-55f07572388f
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+An exception occurred while iterating over the results of a query for context type 'NightWatch.Infrastructure.Persistence.NightWatchDbContext'.
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---&gt; Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+ ---&gt; System.ComponentModel.Win32Exception (11001): No such host is known.
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:11001,State:0,Class:20
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+
+Exception: 
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---&gt; Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+ ---&gt; System.ComponentModel.Win32Exception (11001): No such host is known.
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:11001,State:0,Class:20
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:08:26Z"/><EventRecordID>484015296</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer
+EventId: 2
+SpanId: 1360ecb66b6942dd
+TraceId: 87d5a6f34cc922b797f24e6cc9fc6b6c
+ParentId: 0000000000000000
+RequestId: 400005fa-0007-f400-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+
+Connection ID "17582052976124495337", Request ID "400005fa-0007-f400-b63f-84710c7967bb": An unhandled exception was thrown by the application.
+
+Exception: 
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---&gt; Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+ ---&gt; System.ComponentModel.Win32Exception (11001): No such host is known.
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:11001,State:0,Class:20
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout(String tenantId, ExecutiveLayoutUpdateRequest request, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Api\Controllers\ExecutiveLayoutController.cs:line 51
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeInnerFilterAsync&gt;g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:08:49Z"/><EventRecordID>484038343</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: 23b2da6448cddec5
+TraceId: 6fec26a911ccc52e48d0af5abd9ce1f6
+ParentId: 0000000000000000
+RequestId: 400005fe-0007-f400-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 9dae6f03-36a7-4be0-b9dd-b9b4958dc061
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:08:49.3291365Z, correlationId = 48ede8c0-cbfe-44eb-8f31-4eeae4b4d3c6.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"ParserFailure","message":"ParserFailure"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:08:49Z"/><EventRecordID>484038343</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: 23b2da6448cddec5
+TraceId: 6fec26a911ccc52e48d0af5abd9ce1f6
+ParentId: 0000000000000000
+RequestId: 400005fe-0007-f400-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 9dae6f03-36a7-4be0-b9dd-b9b4958dc061
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:08:49.3259411Z, correlationId = ecd87929-8052-4756-8783-988c22f44fef.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"UnknownFunction","message":"Unknown function: 'bag_length'."},{"code":"Default","message":"Filter expression should be Boolean"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name="IIS AspNetCore Module V2"/><EventID>1033</EventID><Level>4</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:22Z"/><EventRecordID>484071203</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Application 'MACHINE/WEBROOT/APPHOST/EUN-P-NIGHTWATCH-API' has shutdown.</Data><Data>Process Id: 2332.</Data><Data>File Version: 18.0.26079.26. Description: IIS ASP.NET Core Module V2 Request Handler. Commit: </Data></EventData></Event><Event><System><Provider Name="IIS AspNetCore Module V2"/><EventID>1032</EventID><Level>4</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:28Z"/><EventRecordID>484077343</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Application 'C:\home\site\wwwroot\' started successfully.</Data><Data>Process Id: 13820.</Data><Data>File Version: 18.0.26079.26. Description: IIS ASP.NET Core Module V2 Request Handler. Commit: </Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:30Z"/><EventRecordID>484079187</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 089c3cca5a654a34
+TraceId: e4cc3715382c616bb41bdd1e10c45ac6
+ParentId: 0000000000000000
+RequestId: 40001275-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'AzureHealthScore' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:30Z"/><EventRecordID>484079203</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 089c3cca5a654a34
+TraceId: e4cc3715382c616bb41bdd1e10c45ac6
+ParentId: 0000000000000000
+RequestId: 40001275-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'BusinessImpactEstimateEur' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:30Z"/><EventRecordID>484079203</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 089c3cca5a654a34
+TraceId: e4cc3715382c616bb41bdd1e10c45ac6
+ParentId: 0000000000000000
+RequestId: 40001275-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'CostEfficiencyScore' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:30Z"/><EventRecordID>484079203</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 089c3cca5a654a34
+TraceId: e4cc3715382c616bb41bdd1e10c45ac6
+ParentId: 0000000000000000
+RequestId: 40001275-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'GovernanceScore' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:30Z"/><EventRecordID>484079203</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 089c3cca5a654a34
+TraceId: e4cc3715382c616bb41bdd1e10c45ac6
+ParentId: 0000000000000000
+RequestId: 40001275-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'ReliabilityScore' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:30Z"/><EventRecordID>484079203</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 089c3cca5a654a34
+TraceId: e4cc3715382c616bb41bdd1e10c45ac6
+ParentId: 0000000000000000
+RequestId: 40001275-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'SecurityScore' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080109</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Database.Command
+EventId: 20102
+SpanId: 089c3cca5a654a34
+TraceId: e4cc3715382c616bb41bdd1e10c45ac6
+ParentId: 0000000000000000
+RequestId: 40001275-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+Failed executing DbCommand (114ms) [Parameters=[@__tenantId_0='?' (Size = 128), @__userObjectId_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [e].[Id], [e].[LayoutJson], [e].[TenantId], [e].[UpdatedAtUtc], [e].[UserObjectId]
+FROM [ExecutiveDashboardLayouts] AS [e]
+WHERE [e].[TenantId] = @__tenantId_0 AND [e].[UserObjectId] = @__userObjectId_1
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080187</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Query
+EventId: 10100
+SpanId: 089c3cca5a654a34
+TraceId: e4cc3715382c616bb41bdd1e10c45ac6
+ParentId: 0000000000000000
+RequestId: 40001275-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+An exception occurred while iterating over the results of a query for context type 'NightWatch.Infrastructure.Persistence.NightWatchDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080203</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer
+EventId: 2
+SpanId: 089c3cca5a654a34
+TraceId: e4cc3715382c616bb41bdd1e10c45ac6
+ParentId: 0000000000000000
+RequestId: 40001275-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+
+Connection ID "17149707390422094451", Request ID "40001275-0002-ee00-b63f-84710c7967bb": An unhandled exception was thrown by the application.
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout(String tenantId, ExecutiveLayoutUpdateRequest request, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Api\Controllers\ExecutiveLayoutController.cs:line 51
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeInnerFilterAsync&gt;g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080281</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Database.Command
+EventId: 20102
+SpanId: 18997dca931cb850
+TraceId: 9e471945dea21c634ba07284711e6377
+ParentId: 0000000000000000
+RequestId: 40000c9f-0003-f900-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+Failed executing DbCommand (4ms) [Parameters=[@__tenantId_0='?' (Size = 128), @__userObjectId_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [e].[Id], [e].[LayoutJson], [e].[TenantId], [e].[UpdatedAtUtc], [e].[UserObjectId]
+FROM [ExecutiveDashboardLayouts] AS [e]
+WHERE [e].[TenantId] = @__tenantId_0 AND [e].[UserObjectId] = @__userObjectId_1
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080281</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Query
+EventId: 10100
+SpanId: 18997dca931cb850
+TraceId: 9e471945dea21c634ba07284711e6377
+ParentId: 0000000000000000
+RequestId: 40000c9f-0003-f900-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+An exception occurred while iterating over the results of a query for context type 'NightWatch.Infrastructure.Persistence.NightWatchDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080296</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer
+EventId: 2
+SpanId: 18997dca931cb850
+TraceId: 9e471945dea21c634ba07284711e6377
+ParentId: 0000000000000000
+RequestId: 40000c9f-0003-f900-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+
+Connection ID "17942340929134267540", Request ID "40000c9f-0003-f900-b63f-84710c7967bb": An unhandled exception was thrown by the application.
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout(String tenantId, ExecutiveLayoutUpdateRequest request, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Api\Controllers\ExecutiveLayoutController.cs:line 51
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeInnerFilterAsync&gt;g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080328</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Database.Command
+EventId: 20102
+SpanId: f82dda46d50d7c23
+TraceId: 149c7db842d748133599389dffa4e1a2
+ParentId: 0000000000000000
+RequestId: 40000ca0-0003-f900-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+Failed executing DbCommand (1ms) [Parameters=[@__tenantId_0='?' (Size = 128), @__userObjectId_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [e].[Id], [e].[LayoutJson], [e].[TenantId], [e].[UpdatedAtUtc], [e].[UserObjectId]
+FROM [ExecutiveDashboardLayouts] AS [e]
+WHERE [e].[TenantId] = @__tenantId_0 AND [e].[UserObjectId] = @__userObjectId_1
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080328</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Query
+EventId: 10100
+SpanId: f82dda46d50d7c23
+TraceId: 149c7db842d748133599389dffa4e1a2
+ParentId: 0000000000000000
+RequestId: 40000ca0-0003-f900-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+An exception occurred while iterating over the results of a query for context type 'NightWatch.Infrastructure.Persistence.NightWatchDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080328</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer
+EventId: 2
+SpanId: f82dda46d50d7c23
+TraceId: 149c7db842d748133599389dffa4e1a2
+ParentId: 0000000000000000
+RequestId: 40000ca0-0003-f900-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+
+Connection ID "17942340929134267540", Request ID "40000ca0-0003-f900-b63f-84710c7967bb": An unhandled exception was thrown by the application.
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout(String tenantId, ExecutiveLayoutUpdateRequest request, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Api\Controllers\ExecutiveLayoutController.cs:line 51
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeInnerFilterAsync&gt;g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080343</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Database.Command
+EventId: 20102
+SpanId: 351142326bf283b2
+TraceId: 6a339b8948c7f1e2f7a9702987aecaf2
+ParentId: 0000000000000000
+RequestId: 40001276-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+Failed executing DbCommand (1ms) [Parameters=[@__tenantId_0='?' (Size = 128), @__userObjectId_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [e].[Id], [e].[LayoutJson], [e].[TenantId], [e].[UpdatedAtUtc], [e].[UserObjectId]
+FROM [ExecutiveDashboardLayouts] AS [e]
+WHERE [e].[TenantId] = @__tenantId_0 AND [e].[UserObjectId] = @__userObjectId_1
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080375</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Query
+EventId: 10100
+SpanId: 351142326bf283b2
+TraceId: 6a339b8948c7f1e2f7a9702987aecaf2
+ParentId: 0000000000000000
+RequestId: 40001276-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: e599d5ed-4d7f-4475-a201-9c59b4c161a5
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+An exception occurred while iterating over the results of a query for context type 'NightWatch.Infrastructure.Persistence.NightWatchDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:31Z"/><EventRecordID>484080375</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer
+EventId: 2
+SpanId: 351142326bf283b2
+TraceId: 6a339b8948c7f1e2f7a9702987aecaf2
+ParentId: 0000000000000000
+RequestId: 40001276-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+
+Connection ID "17149707390422094451", Request ID "40001276-0002-ee00-b63f-84710c7967bb": An unhandled exception was thrown by the application.
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout(String tenantId, ExecutiveLayoutUpdateRequest request, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Api\Controllers\ExecutiveLayoutController.cs:line 51
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeInnerFilterAsync&gt;g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:46Z"/><EventRecordID>484095140</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Database.Command
+EventId: 20102
+SpanId: caa815cdb3a1058e
+TraceId: 28070b4c1095ff2a5d8c3542c205b662
+ParentId: 0000000000000000
+RequestId: 40000601-0007-f400-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 3a043e42-8644-48ca-85c5-ebd68e2b39b7
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.GetLayout (NightWatch.Api)
+
+Failed executing DbCommand (2ms) [Parameters=[@__tenantId_0='?' (Size = 128), @__userObjectId_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [e].[Id], [e].[LayoutJson], [e].[TenantId], [e].[UpdatedAtUtc], [e].[UserObjectId]
+FROM [ExecutiveDashboardLayouts] AS [e]
+WHERE [e].[TenantId] = @__tenantId_0 AND [e].[UserObjectId] = @__userObjectId_1
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:46Z"/><EventRecordID>484095140</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Query
+EventId: 10100
+SpanId: caa815cdb3a1058e
+TraceId: 28070b4c1095ff2a5d8c3542c205b662
+ParentId: 0000000000000000
+RequestId: 40000601-0007-f400-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 3a043e42-8644-48ca-85c5-ebd68e2b39b7
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.GetLayout (NightWatch.Api)
+
+An exception occurred while iterating over the results of a query for context type 'NightWatch.Infrastructure.Persistence.NightWatchDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:46Z"/><EventRecordID>484095156</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer
+EventId: 2
+SpanId: caa815cdb3a1058e
+TraceId: 28070b4c1095ff2a5d8c3542c205b662
+ParentId: 0000000000000000
+RequestId: 40000601-0007-f400-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+
+Connection ID "17582052976124495337", Request ID "40000601-0007-f400-b63f-84710c7967bb": An unhandled exception was thrown by the application.
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at NightWatch.Api.Controllers.ExecutiveLayoutController.GetLayout(String tenantId, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Api\Controllers\ExecutiveLayoutController.cs:line 24
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeInnerFilterAsync&gt;g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+ClientConnectionId:6ad402b8-2dfe-49a2-aac7-19ec5d88456c
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:ba86ed61-63b7-4bb6-9b7d-66a58d7496ee
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:46Z"/><EventRecordID>484095265</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: 8e55bfd1f462109d
+TraceId: 61738a7009a456e910e275c87577fd7a
+ParentId: 0000000000000000
+RequestId: 40000554-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: e2442241-637a-44c9-8eb2-b1a5be0ab76a
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:09:46.2634797Z, correlationId = 4d7cc21c-7f20-4d1d-8e16-b6c7fbc16d38.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"ParserFailure","message":"ParserFailure"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:46Z"/><EventRecordID>484095312</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: 8e55bfd1f462109d
+TraceId: 61738a7009a456e910e275c87577fd7a
+ParentId: 0000000000000000
+RequestId: 40000554-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: e2442241-637a-44c9-8eb2-b1a5be0ab76a
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:09:46.3172891Z, correlationId = 89bd1022-3f01-4ac2-841e-ef01cd69589e.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"UnknownFunction","message":"Unknown function: 'bag_length'."},{"code":"Default","message":"Filter expression should be Boolean"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name="IIS AspNetCore Module V2"/><EventID>1033</EventID><Level>4</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:09:56Z"/><EventRecordID>484105515</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Application 'MACHINE/WEBROOT/APPHOST/EUN-P-NIGHTWATCH-API' has shutdown.</Data><Data>Process Id: 13820.</Data><Data>File Version: 18.0.26079.26. Description: IIS ASP.NET Core Module V2 Request Handler. Commit: </Data></EventData></Event><Event><System><Provider Name="IIS AspNetCore Module V2"/><EventID>1032</EventID><Level>4</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:12Z"/><EventRecordID>484121906</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Application 'C:\home\site\wwwroot\' started successfully.</Data><Data>Process Id: 12612.</Data><Data>File Version: 18.0.26079.26. Description: IIS ASP.NET Core Module V2 Request Handler. Commit: </Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:14Z"/><EventRecordID>484123343</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: d356a69107383d6c
+TraceId: da23eeba14c9a49f6f10dbf3ced5b696
+ParentId: 0000000000000000
+RequestId: 40001279-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/governance/tenant-a
+ActionId: 280c1d23-5c1d-4900-a347-c640c8ece33b
+ActionName: NightWatch.Api.Controllers.GovernanceController.GetGovernanceDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:10:14.3441341Z, correlationId = 8860b828-10e6-4786-b159-6866e40fb28d.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"UnknownFunction","message":"Unknown function: 'bag_length'."},{"code":"Default","message":"Filter expression should be Boolean"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:14Z"/><EventRecordID>484123859</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: d356a69107383d6c
+TraceId: da23eeba14c9a49f6f10dbf3ced5b696
+ParentId: 0000000000000000
+RequestId: 40001279-0002-ee00-b63f-84710c7967bb
+RequestPath: /api/dashboard/governance/tenant-a
+ActionId: 280c1d23-5c1d-4900-a347-c640c8ece33b
+ActionName: NightWatch.Api.Controllers.GovernanceController.GetGovernanceDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:10:14.3410186Z, correlationId = dcf4c557-737b-4c71-afcd-7f895be25436.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"ParserFailure","message":"ParserFailure"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:45Z"/><EventRecordID>484154609</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: 4a5a6c576f66c90f
+TraceId: fa6b1244f5651e46771aecf1286b8d23
+ParentId: 0000000000000000
+RequestId: 40000d35-0006-f800-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 1c1dd218-c0be-443f-970b-d23437d6e834
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:10:45.6085833Z, correlationId = eebba984-253c-40ce-bb84-7132a572f56f.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"ParserFailure","message":"ParserFailure"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:45Z"/><EventRecordID>484154609</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: 4a5a6c576f66c90f
+TraceId: fa6b1244f5651e46771aecf1286b8d23
+ParentId: 0000000000000000
+RequestId: 40000d35-0006-f800-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 1c1dd218-c0be-443f-970b-d23437d6e834
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Azure Resource Graph count query failed.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 400: {"error":{"code":"BadRequest","message":"Please provide below info when asking for support: timestamp = 2026-05-19T16:10:45.6218476Z, correlationId = e17f858b-4cd1-43c2-a523-b9a49b3dc9ca.","details":[{"code":"InvalidQuery","message":"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying."},{"code":"UnknownFunction","message":"Unknown function: 'bag_length'."},{"code":"Default","message":"Filter expression should be Boolean"}]}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.QueryArgCountAsync(String query, IReadOnlyCollection`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1279
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:46Z"/><EventRecordID>484155718</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.Azure.CostManagementClient
+EventId: 0
+SpanId: 4a5a6c576f66c90f
+TraceId: fa6b1244f5651e46771aecf1286b8d23
+ParentId: 0000000000000000
+RequestId: 40000d35-0006-f800-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 1c1dd218-c0be-443f-970b-d23437d6e834
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Transient Azure API error 429. Retrying in 250ms.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:47Z"/><EventRecordID>484156187</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.Azure.CostManagementClient
+EventId: 0
+SpanId: 4a5a6c576f66c90f
+TraceId: fa6b1244f5651e46771aecf1286b8d23
+ParentId: 0000000000000000
+RequestId: 40000d35-0006-f800-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 1c1dd218-c0be-443f-970b-d23437d6e834
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Transient Azure API error 429. Retrying in 750ms.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:47Z"/><EventRecordID>484156984</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 63680fc2606f4b56
+TraceId: 4f0be8f668b16a6d81742375419d1718
+ParentId: 0000000000000000
+RequestId: 40000557-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 75a49bcd-a40b-4c67-8ebf-a65ea4a322ef
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'AzureHealthScore' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:47Z"/><EventRecordID>484156984</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 63680fc2606f4b56
+TraceId: 4f0be8f668b16a6d81742375419d1718
+ParentId: 0000000000000000
+RequestId: 40000557-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 75a49bcd-a40b-4c67-8ebf-a65ea4a322ef
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'BusinessImpactEstimateEur' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:48Z"/><EventRecordID>484157000</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 63680fc2606f4b56
+TraceId: 4f0be8f668b16a6d81742375419d1718
+ParentId: 0000000000000000
+RequestId: 40000557-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 75a49bcd-a40b-4c67-8ebf-a65ea4a322ef
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'CostEfficiencyScore' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:48Z"/><EventRecordID>484157000</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 63680fc2606f4b56
+TraceId: 4f0be8f668b16a6d81742375419d1718
+ParentId: 0000000000000000
+RequestId: 40000557-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 75a49bcd-a40b-4c67-8ebf-a65ea4a322ef
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'GovernanceScore' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:48Z"/><EventRecordID>484157000</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 63680fc2606f4b56
+TraceId: 4f0be8f668b16a6d81742375419d1718
+ParentId: 0000000000000000
+RequestId: 40000557-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 75a49bcd-a40b-4c67-8ebf-a65ea4a322ef
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'ReliabilityScore' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:48Z"/><EventRecordID>484157046</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Model.Validation
+EventId: 30000
+SpanId: 63680fc2606f4b56
+TraceId: 4f0be8f668b16a6d81742375419d1718
+ParentId: 0000000000000000
+RequestId: 40000557-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 75a49bcd-a40b-4c67-8ebf-a65ea4a322ef
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+No store type was specified for the decimal property 'SecurityScore' on entity type 'DailySnapshotEntity'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:48Z"/><EventRecordID>484157125</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.Azure.CostManagementClient
+EventId: 0
+SpanId: 4a5a6c576f66c90f
+TraceId: fa6b1244f5651e46771aecf1286b8d23
+ParentId: 0000000000000000
+RequestId: 40000d35-0006-f800-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 1c1dd218-c0be-443f-970b-d23437d6e834
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Transient Azure API error 429. Retrying in 2000ms.
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:48Z"/><EventRecordID>484157796</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Database.Command
+EventId: 20102
+SpanId: 63680fc2606f4b56
+TraceId: 4f0be8f668b16a6d81742375419d1718
+ParentId: 0000000000000000
+RequestId: 40000557-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 75a49bcd-a40b-4c67-8ebf-a65ea4a322ef
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+Failed executing DbCommand (46ms) [Parameters=[@__tenantId_0='?' (Size = 128), @__userObjectId_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [e].[Id], [e].[LayoutJson], [e].[TenantId], [e].[UpdatedAtUtc], [e].[UserObjectId]
+FROM [ExecutiveDashboardLayouts] AS [e]
+WHERE [e].[TenantId] = @__tenantId_0 AND [e].[UserObjectId] = @__userObjectId_1
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:48Z"/><EventRecordID>484157812</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.EntityFrameworkCore.Query
+EventId: 10100
+SpanId: 63680fc2606f4b56
+TraceId: 4f0be8f668b16a6d81742375419d1718
+ParentId: 0000000000000000
+RequestId: 40000557-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+ActionId: 75a49bcd-a40b-4c67-8ebf-a65ea4a322ef
+ActionName: NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout (NightWatch.Api)
+
+An exception occurred while iterating over the results of a query for context type 'NightWatch.Infrastructure.Persistence.NightWatchDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:044e9a2f-c135-4dd1-82bd-c678b117ed43
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:c53f6c1a-a888-4ea7-a833-96e153387b0c
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:044e9a2f-c135-4dd1-82bd-c678b117ed43
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:c53f6c1a-a888-4ea7-a833-96e153387b0c
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>1</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:48Z"/><EventRecordID>484157828</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer
+EventId: 2
+SpanId: 63680fc2606f4b56
+TraceId: 4f0be8f668b16a6d81742375419d1718
+ParentId: 0000000000000000
+RequestId: 40000557-0002-f700-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive-layout/tenant-a
+
+Connection ID "17798225736763442499", Request ID "40000557-0002-f700-b63f-84710c7967bb": An unhandled exception was thrown by the application.
+
+Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'ExecutiveDashboardLayouts'.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__281_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at NightWatch.Api.Controllers.ExecutiveLayoutController.UpsertLayout(String tenantId, ExecutiveLayoutUpdateRequest request, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Api\Controllers\ExecutiveLayoutController.cs:line 51
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeInnerFilterAsync&gt;g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+ClientConnectionId:044e9a2f-c135-4dd1-82bd-c678b117ed43
+Error Number:208,State:1,Class:16
+ClientConnectionId before routing:c53f6c1a-a888-4ea7-a833-96e153387b0c
+Routing Destination:f77e8eec49ea.tr14469.northeurope1-a.worker.database.windows.net,11047
+</Data></EventData></Event><Event><System><Provider Name=".NET Runtime"/><EventID>1000</EventID><Level>2</Level><Task>0</Task><Keywords>Keywords</Keywords><TimeCreated SystemTime="2026-05-19T16:10:51Z"/><EventRecordID>484160343</EventRecordID><Channel>Application</Channel><Computer>webwk000000</Computer><Security/></System><EventData><Data>Category: NightWatch.Infrastructure.Services.NightWatchInsightsService
+EventId: 0
+SpanId: 4a5a6c576f66c90f
+TraceId: fa6b1244f5651e46771aecf1286b8d23
+ParentId: 0000000000000000
+RequestId: 40000d35-0006-f800-b63f-84710c7967bb
+RequestPath: /api/dashboard/executive/tenant-a
+ActionId: 1c1dd218-c0be-443f-970b-d23437d6e834
+ActionName: NightWatch.Api.Controllers.ExecutiveDashboardController.GetExecutiveDashboard (NightWatch.Api)
+
+Unable to load Azure Cost Management trend data.
+
+Exception: 
+System.Net.Http.HttpRequestException: Azure API call failed with 429: {"error":{"code":"429","message":"Too many requests. Please retry."}}
+   at NightWatch.Infrastructure.Services.Azure.AzureApiClientBase.SendWithRetryAsync(Func`1 requestFactory, TokenRequestContext tokenRequestContext, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\Azure\AzureApiClientBase.cs:line 41
+   at NightWatch.Infrastructure.Services.NightWatchInsightsService.GetCostTrendAsync(IReadOnlyList`1 subscriptionIds, CancellationToken cancellationToken) in C:\Users\pbaby\source\repos\NightWatch\src\backend\NightWatch.Infrastructure\Services\NightWatchInsightsService.cs:line 1185
+</Data></EventData></Event></Events>

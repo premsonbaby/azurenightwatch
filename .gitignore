@@ -1,0 +1,52 @@
+# ── Build artifacts ───────────────────────────────────────────────────────────
+[Bb]in/
+[Oo]bj/
+publish/
+artifacts/
+
+# ── .NET ──────────────────────────────────────────────────────────────────────
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+*.ncrunchproject
+TestResults/
+
+# ── Node / frontend ───────────────────────────────────────────────────────────
+node_modules/
+dist/
+.npm
+.eslintcache
+*.tsbuildinfo
+
+# ── Environment & secrets ──────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+appsettings.local.json
+appsettings.*.local.json
+secrets.json
+
+# ── Claude Code (internal tooling — not for public repos) ─────────────────────
+CLAUDE.md
+.claude/
+
+# ── Temp / deploy logs / local output ─────────────────────────────────────────
+.tmp/
+tmp/
+out/
+webapp_logs/
+webapp_logs.zip
+*.zip
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.idea/
+*.swp
+*.swo
+.github/workflows/

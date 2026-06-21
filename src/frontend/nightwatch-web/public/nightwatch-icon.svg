@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Dark background gradient -->
+    <radialGradient id="bg" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0a0f1e"/>
+    </radialGradient>
+    <!-- Eye glow -->
+    <radialGradient id="eyeGlowL" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#67e8f9" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#06b6d4" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0891b2" stop-opacity="0.4"/>
+    </radialGradient>
+    <radialGradient id="eyeGlowR" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#67e8f9" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#06b6d4" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0891b2" stop-opacity="0.4"/>
+    </radialGradient>
+    <!-- Pupil depth -->
+    <radialGradient id="pupil" cx="35%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#040d1a"/>
+    </radialGradient>
+    <!-- Body gradient -->
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <!-- Glow filter for eyes -->
+    <filter id="eyeGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Outer ring glow -->
+    <filter id="ringGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Clip to circle -->
+    <clipPath id="circle">
+      <circle cx="32" cy="32" r="30"/>
+    </clipPath>
+  </defs>
+
+  <!-- Outer glow ring -->
+  <circle cx="32" cy="32" r="31" fill="none" stroke="#06b6d4" stroke-width="0.5" stroke-opacity="0.5" filter="url(#ringGlow)"/>
+
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#bg)"/>
+
+  <!-- Subtle arc star dots in background -->
+  <g clip-path="url(#circle)" opacity="0.4">
+    <circle cx="12" cy="14" r="0.7" fill="#94a3b8"/>
+    <circle cx="52" cy="10" r="0.5" fill="#94a3b8"/>
+    <circle cx="8" cy="44" r="0.6" fill="#94a3b8"/>
+    <circle cx="56" cy="48" r="0.5" fill="#94a3b8"/>
+    <circle cx="20" cy="8" r="0.4" fill="#7dd3fc"/>
+    <circle cx="46" cy="16" r="0.4" fill="#7dd3fc"/>
+    <circle cx="57" cy="30" r="0.5" fill="#94a3b8"/>
+    <circle cx="7" cy="28" r="0.4" fill="#94a3b8"/>
+  </g>
+
+  <!-- Crescent moon (top right) -->
+  <g clip-path="url(#circle)">
+    <circle cx="50" cy="11" r="5.5" fill="#1e3a5f" opacity="0.9"/>
+    <circle cx="52" cy="10" r="4.2" fill="#0a0f1e"/>
+  </g>
+
+  <!-- Owl body -->
+  <ellipse cx="32" cy="44" rx="14" ry="13" fill="url(#bodyGrad)" clip-path="url(#circle)"/>
+
+  <!-- Wing left -->
+  <path d="M18 46 Q10 38 14 52 Q18 58 22 54 Z" fill="#1e293b" opacity="0.85" clip-path="url(#circle)"/>
+  <!-- Wing right -->
+  <path d="M46 46 Q54 38 50 52 Q46 58 42 54 Z" fill="#1e293b" opacity="0.85" clip-path="url(#circle)"/>
+
+  <!-- Ear tufts -->
+  <path d="M24 24 L21 16 L26 22 Z" fill="#334155"/>
+  <path d="M40 24 L43 16 L38 22 Z" fill="#334155"/>
+
+  <!-- Owl head -->
+  <circle cx="32" cy="30" r="14" fill="#2d3f55"/>
+
+  <!-- Face disc (lighter inner ring) -->
+  <ellipse cx="32" cy="31" rx="11" ry="10" fill="#3b5068" opacity="0.6"/>
+
+  <!-- Eye sockets -->
+  <circle cx="25.5" cy="30" r="7" fill="#0f1e35"/>
+  <circle cx="38.5" cy="30" r="7" fill="#0f1e35"/>
+
+  <!-- Eye iris glow left -->
+  <circle cx="25.5" cy="30" r="5.8" fill="url(#eyeGlowL)" filter="url(#eyeGlow)"/>
+  <!-- Eye iris glow right -->
+  <circle cx="38.5" cy="30" r="5.8" fill="url(#eyeGlowR)" filter="url(#eyeGlow)"/>
+
+  <!-- Pupils -->
+  <circle cx="25.5" cy="30" r="3.2" fill="url(#pupil)"/>
+  <circle cx="38.5" cy="30" r="3.2" fill="url(#pupil)"/>
+
+  <!-- Eye shine left -->
+  <circle cx="24" cy="28.5" r="1" fill="#e0f7ff" opacity="0.9"/>
+  <circle cx="26.5" cy="31.5" r="0.4" fill="#ffffff" opacity="0.5"/>
+  <!-- Eye shine right -->
+  <circle cx="37" cy="28.5" r="1" fill="#e0f7ff" opacity="0.9"/>
+  <circle cx="39.5" cy="31.5" r="0.4" fill="#ffffff" opacity="0.5"/>
+
+  <!-- Beak -->
+  <path d="M30.5 33.5 L32 37 L33.5 33.5 Z" fill="#f59e0b" opacity="0.9"/>
+
+  <!-- Belly feather pattern -->
+  <ellipse cx="32" cy="46" rx="7" ry="6" fill="#3b5068" opacity="0.5" clip-path="url(#circle)"/>
+  <path d="M27 43 Q32 40 37 43 Q32 46 27 43Z" fill="#475569" opacity="0.4" clip-path="url(#circle)"/>
+  <path d="M26 47 Q32 44 38 47 Q32 50 26 47Z" fill="#475569" opacity="0.4" clip-path="url(#circle)"/>
+
+  <!-- Talons (feet) -->
+  <path d="M27 56 Q25 58 23 57 Q24 55 27 56Z" fill="#1e3a4c" clip-path="url(#circle)"/>
+  <path d="M27 56 Q27 59 25 60 Q25 57 27 56Z" fill="#1e3a4c" clip-path="url(#circle)"/>
+  <path d="M37 56 Q39 58 41 57 Q40 55 37 56Z" fill="#1e3a4c" clip-path="url(#circle)"/>
+  <path d="M37 56 Q37 59 39 60 Q39 57 37 56Z" fill="#1e3a4c" clip-path="url(#circle)"/>
+
+  <!-- Outer border -->
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#0e7490" stroke-width="1" opacity="0.6"/>
+</svg>

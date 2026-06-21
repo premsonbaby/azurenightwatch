@@ -1,0 +1,468 @@
+trigger: none
+pr: none
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NightWatch Azure DevOps pipeline
+#
+# Trigger: manual only (trigger: none, pr: none)
+#
+# Stages:
+#   1. Deploy_Infrastructure         — Creates resource group and deploys Bicep.
+#                                      Creates the NightWatch MSAL app registration
+#                                      in Azure AD (idempotent via uniqueName).
+#   2. Configure_App_Settings        — Sets app settings on the API App Service:
+#                                        AzureAd__TenantId              (auto)
+#                                        AzureAd__ClientId              (auto)
+#                                        AzureAd__Audience              (auto)
+#                                        MultiTenant__HomeTenantId      (auto)
+#                                        AzureOperations__WorkspaceId   (auto, if workspace exists)
+#                                      Also configures SPA redirect URIs on the app
+#                                      registration and enables Always On.
+#                                      ⚠ The following must be set MANUALLY in the
+#                                      Azure Portal after this stage:
+#                                        MultiTenant__ClientId          (NightWatch MSP app reg)
+#                                        MultiTenant__ClientSecret      (NightWatch MSP secret)
+#                                        ConnectionStrings__SqlDatabase (Azure SQL)
+#                                        ApplicationInsights__ConnectionString
+#   3. Assign_Managed_Identity_Roles — Grants Reader, Security Reader, Cost Management
+#                                      Reader, Log Analytics Reader, and Key Vault Secrets
+#                                      User to the API App Service managed identity.
+#   4. Build_Artifacts               — .NET publish (API) + Vite build (frontend)
+#                                      + zip packaging of both.
+#   5. Deploy_API                    — API zip → App Service
+#   6. Deploy_Web                    — Frontend zip → App Service
+#
+# Required pipeline variables (set in Azure DevOps → Pipelines → Edit → Variables):
+#   deploymentSubscriptionId         — Azure subscription GUID  ← do NOT hardcode here
+#   SQL_ADMIN_PASSWORD               — SQL admin password (mark as secret)
+#
+# The following are already defaulted in the variables block below and only need
+# to be overridden here if deploying to a different environment:
+#   azureServiceConnection, resourceGroupName, location, namePrefix, sqlAdminUser
+#
+# NOTE: The API App Service must be on Basic B1 or higher to enable Always On,
+# which is required for the Teams notification background service to run reliably.
+# ─────────────────────────────────────────────────────────────────────────────
+
+variables:
+  # ── Change these to match your Azure DevOps and Azure environment ──────────
+  azureServiceConnection: 'NightWatch-Azure-SC'   # Azure DevOps service connection name
+  deploymentSubscriptionId: ''                    # Set in pipeline variables — do not hardcode
+  resourceGroupName: 'nightwatch-rg'              # Target resource group
+  location: 'northeurope'                         # Azure region
+  namePrefix: 'nightwatch'                        # Prefix for all resource names
+  # ─────────────────────────────────────────────────────────────────────────
+
+  sqlAdminUser: 'sqlnightwatchadmin'
+  sqlAdminPassword: '$(SQL_ADMIN_PASSWORD)'
+
+stages:
+  - stage: Deploy_Infrastructure
+    displayName: 'Deploy infrastructure'
+    jobs:
+      - job: DeployBicep
+        displayName: 'Create resource group and deploy Bicep'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - checkout: self
+
+          - task: AzureCLI@2
+            displayName: 'Provision Azure resources'
+            inputs:
+              azureSubscription: '$(azureServiceConnection)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                set -euo pipefail
+
+                if [ -n "$(deploymentSubscriptionId)" ]; then
+                  az account set --subscription "$(deploymentSubscriptionId)"
+                fi
+
+                az group create \
+                  --name "$(resourceGroupName)" \
+                  --location "$(location)"
+
+                az deployment group create \
+                  --resource-group "$(resourceGroupName)" \
+                  --template-file infra/bicep/main.bicep \
+                  --name "nightwatch-$(Build.BuildId)" \
+                  --parameters \
+                    namePrefix="$(namePrefix)" \
+                    location="$(location)" \
+                    sqlAdminUser="$(sqlAdminUser)" \
+                    sqlAdminPassword="$(sqlAdminPassword)" \
+                    allowAzureServicesToSql=true \
+                    appDisplayName="NightWatch MSAL" \
+                  --output json > deployment-result.json
+
+                tenant_id=$(az account show --query tenantId --output tsv)
+                subscription_id=$(az account show --query id --output tsv)
+
+                api_app_name=$(jq -r '.properties.outputs.apiAppName.value' deployment-result.json)
+                web_app_name=$(jq -r '.properties.outputs.webAppName.value' deployment-result.json)
+                api_client_id=$(jq -r '.properties.outputs.appRegistrationClientId.value' deployment-result.json)
+
+                echo "##vso[task.setvariable variable=tenantId;isOutput=true]$tenant_id"
+                echo "##vso[task.setvariable variable=subscriptionId;isOutput=true]$subscription_id"
+                echo "##vso[task.setvariable variable=apiAppName;isOutput=true]$api_app_name"
+                echo "##vso[task.setvariable variable=webAppName;isOutput=true]$web_app_name"
+                echo "##vso[task.setvariable variable=apiClientId;isOutput=true]$api_client_id"
+            name: CaptureOutputs
+
+  - stage: Configure_App_Settings
+    displayName: 'Configure app settings'
+    dependsOn:
+      - Deploy_Infrastructure
+    variables:
+      tenantId: $[ stageDependencies.Deploy_Infrastructure.DeployBicep.outputs['CaptureOutputs.tenantId'] ]
+      apiAppName: $[ stageDependencies.Deploy_Infrastructure.DeployBicep.outputs['CaptureOutputs.apiAppName'] ]
+      webAppName: $[ stageDependencies.Deploy_Infrastructure.DeployBicep.outputs['CaptureOutputs.webAppName'] ]
+      apiClientId: $[ stageDependencies.Deploy_Infrastructure.DeployBicep.outputs['CaptureOutputs.apiClientId'] ]
+    jobs:
+      - job: ApplySettings
+        displayName: 'Set API app settings'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - task: AzureCLI@2
+            displayName: 'Apply API settings'
+            inputs:
+              azureSubscription: '$(azureServiceConnection)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                set -euo pipefail
+
+                if [ -n "$(deploymentSubscriptionId)" ]; then
+                  az account set --subscription "$(deploymentSubscriptionId)"
+                fi
+
+                workspace_name="$(namePrefix)-law"
+                workspace_id=$(az monitor log-analytics workspace show \
+                  --resource-group "$(resourceGroupName)" \
+                  --workspace-name "$workspace_name" \
+                  --query customerId \
+                  --output tsv 2>/dev/null || true)
+
+                settings=(
+                  "AzureAd__TenantId=$(tenantId)"
+                  "AzureAd__ClientId=$(apiClientId)"
+                  "AzureAd__Audience=api://$(apiClientId)"
+                  "MultiTenant__HomeTenantId=$(tenantId)"
+                )
+
+                if [ -n "$workspace_id" ]; then
+                  settings+=("AzureOperations__WorkspaceId=$workspace_id")
+                fi
+
+                az webapp config appsettings set \
+                  --resource-group "$(resourceGroupName)" \
+                  --name "$(apiAppName)" \
+                  --settings "${settings[@]}"
+
+                echo "##[warning]MANUAL STEPS REQUIRED after this pipeline completes:"
+                echo "##[warning]Set the following in Azure Portal → App Service → $(apiAppName) → Configuration:"
+                echo "##[warning]  MultiTenant__ClientId                — NightWatch MSP app registration client ID"
+                echo "##[warning]  MultiTenant__ClientSecret            — NightWatch MSP client secret (mark as secret)"
+                echo "##[warning]  ConnectionStrings__SqlDatabase       — Azure SQL connection string"
+                echo "##[warning]  ApplicationInsights__ConnectionString — Application Insights connection string"
+
+          - task: AzureCLI@2
+            displayName: 'Configure SPA redirect URIs in app registration'
+            inputs:
+              azureSubscription: '$(azureServiceConnection)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                set -euo pipefail
+
+                if [ -n "$(deploymentSubscriptionId)" ]; then
+                  az account set --subscription "$(deploymentSubscriptionId)"
+                fi
+
+                web_redirect_uri="https://$(webAppName).azurewebsites.net"
+                app_object_id=$(az ad app show --id "$(apiClientId)" --query id --output tsv)
+
+                patch_body=$(jq -nc \
+                  --arg local "http://localhost:5173" \
+                  --arg web "$web_redirect_uri" \
+                  '{spa:{redirectUris:[$local,$web]}}')
+
+                az rest \
+                  --method PATCH \
+                  --url "https://graph.microsoft.com/v1.0/applications/$app_object_id" \
+                  --headers "Content-Type=application/json" \
+                  --body "$patch_body"
+
+          - task: AzureCLI@2
+            displayName: 'Enable Always On on API App Service'
+            inputs:
+              azureSubscription: '$(azureServiceConnection)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                set -euo pipefail
+
+                if [ -n "$(deploymentSubscriptionId)" ]; then
+                  az account set --subscription "$(deploymentSubscriptionId)"
+                fi
+
+                # Always On requires Basic B1 or higher — will silently fail on Free F1.
+                # Upgrade the App Service plan to at least B1 before running this step,
+                # or the Teams notification background service will stop when the app idles.
+                echo "Enabling Always On for $(apiAppName)..."
+                az webapp config set \
+                  --resource-group "$(resourceGroupName)" \
+                  --name "$(apiAppName)" \
+                  --always-on true \
+                  --output none || echo "WARNING: Could not enable Always On — plan may not support it (Free F1). Upgrade to B1+ to enable background services."
+
+  - stage: Assign_Managed_Identity_Roles
+    displayName: 'Assign managed identity roles'
+    dependsOn: Deploy_Infrastructure
+    variables:
+      subscriptionId: $[ stageDependencies.Deploy_Infrastructure.DeployBicep.outputs['CaptureOutputs.subscriptionId'] ]
+      apiAppName: $[ stageDependencies.Deploy_Infrastructure.DeployBicep.outputs['CaptureOutputs.apiAppName'] ]
+    jobs:
+      - job: AssignRbac
+        displayName: 'Grant least-privilege RBAC to API managed identity'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - task: AzureCLI@2
+            displayName: 'Assign subscription, workspace, and Key Vault roles'
+            inputs:
+              azureSubscription: '$(azureServiceConnection)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                set -euo pipefail
+
+                if [ -n "$(deploymentSubscriptionId)" ]; then
+                  az account set --subscription "$(deploymentSubscriptionId)"
+                fi
+
+                ensure_role_assignment() {
+                  local principal_id="$1"
+                  local role_name="$2"
+                  local scope="$3"
+
+                  local existing_assignment
+                  existing_assignment=$(az role assignment list \
+                    --assignee-object-id "$principal_id" \
+                    --role "$role_name" \
+                    --scope "$scope" \
+                    --query "[0].id" \
+                    --output tsv)
+
+                  if [ -n "$existing_assignment" ]; then
+                    echo "Role '$role_name' already assigned on '$scope' — skipping."
+                    return 0
+                  fi
+
+                  echo "Assigning '$role_name' on '$scope' to principal '$principal_id'."
+                  az role assignment create \
+                    --assignee-object-id "$principal_id" \
+                    --assignee-principal-type ServicePrincipal \
+                    --role "$role_name" \
+                    --scope "$scope" \
+                    --output none
+                }
+
+                api_principal_id=$(az webapp identity show \
+                  --resource-group "$(resourceGroupName)" \
+                  --name "$(apiAppName)" \
+                  --query principalId \
+                  --output tsv)
+
+                key_vault_scope=$(az keyvault show \
+                  --resource-group "$(resourceGroupName)" \
+                  --name "$(namePrefix)-kv" \
+                  --query id \
+                  --output tsv)
+
+                ensure_role_assignment "$api_principal_id" "Key Vault Secrets User" "$key_vault_scope"
+
+                subscription_scope="/subscriptions/$(subscriptionId)"
+
+                ensure_role_assignment "$api_principal_id" "Reader" "$subscription_scope"
+                ensure_role_assignment "$api_principal_id" "Security Reader" "$subscription_scope"
+                ensure_role_assignment "$api_principal_id" "Cost Management Reader" "$subscription_scope"
+
+                workspace_scope=$(az monitor log-analytics workspace show \
+                  --resource-group "$(resourceGroupName)" \
+                  --workspace-name "$(namePrefix)-law" \
+                  --query id \
+                  --output tsv 2>/dev/null || true)
+
+                if [ -n "$workspace_scope" ]; then
+                  ensure_role_assignment "$api_principal_id" "Log Analytics Reader" "$workspace_scope"
+                else
+                  echo "No Log Analytics workspace found; skipping Log Analytics Reader assignment."
+                fi
+
+  - stage: Build_Artifacts
+    displayName: 'Build deployment artifacts'
+    dependsOn:
+      - Deploy_Infrastructure
+      - Configure_App_Settings
+      - Assign_Managed_Identity_Roles
+    variables:
+      apiAppName: $[ stageDependencies.Deploy_Infrastructure.DeployBicep.outputs['CaptureOutputs.apiAppName'] ]
+    jobs:
+      - job: BuildPackages
+        displayName: 'Build and package API and frontend'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - checkout: self
+
+          - task: UseDotNet@2
+            displayName: 'Install .NET 8 SDK'
+            inputs:
+              packageType: 'sdk'
+              version: '8.0.x'
+
+          - task: NodeTool@0
+            displayName: 'Install Node.js 22'
+            inputs:
+              versionSpec: '22.x'
+
+          - script: |
+              dotnet restore src/backend/NightWatch.Api/NightWatch.Api.csproj
+              dotnet publish src/backend/NightWatch.Api/NightWatch.Api.csproj \
+                -c Release \
+                -o $(Build.ArtifactStagingDirectory)/api
+            displayName: 'Build API'
+
+          - task: ArchiveFiles@2
+            displayName: 'Archive API package'
+            inputs:
+              rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/api'
+              includeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(Build.ArtifactStagingDirectory)/api.zip'
+              replaceExistingArchive: true
+
+          - script: |
+              cd src/frontend/nightwatch-web
+              npm ci
+              VITE_API_BASE_URL="https://$(apiAppName).azurewebsites.net" \
+              npm run build
+
+              cat <<'EOF' > dist/web.config
+              <?xml version="1.0" encoding="utf-8"?>
+              <configuration>
+                <system.webServer>
+                  <rewrite>
+                    <rules>
+                      <rule name="ReactRouter" stopProcessing="true">
+                        <match url=".*" />
+                        <conditions logicalGrouping="MatchAll">
+                          <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                          <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+                        </conditions>
+                        <action type="Rewrite" url="/index.html" />
+                      </rule>
+                    </rules>
+                  </rewrite>
+                </system.webServer>
+              </configuration>
+              EOF
+            displayName: 'Build frontend'
+
+          - task: ArchiveFiles@2
+            displayName: 'Archive frontend package'
+            inputs:
+              rootFolderOrFile: 'src/frontend/nightwatch-web/dist'
+              includeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(Build.ArtifactStagingDirectory)/web.zip'
+              replaceExistingArchive: true
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish deployable packages'
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+
+  - stage: Deploy_API
+    displayName: 'Deploy API'
+    dependsOn:
+      - Deploy_Infrastructure
+      - Build_Artifacts
+    variables:
+      apiAppName: $[ stageDependencies.Deploy_Infrastructure.DeployBicep.outputs['CaptureOutputs.apiAppName'] ]
+    jobs:
+      - job: DeployApiPackage
+        displayName: 'Deploy API package to App Service'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - task: DownloadBuildArtifacts@1
+            displayName: 'Download build artifacts'
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'drop'
+              downloadPath: '$(Pipeline.Workspace)'
+
+          - task: AzureCLI@2
+            displayName: 'Deploy API to App Service'
+            inputs:
+              azureSubscription: '$(azureServiceConnection)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                set -euo pipefail
+                if [ -n "$(deploymentSubscriptionId)" ]; then
+                  az account set --subscription "$(deploymentSubscriptionId)"
+                fi
+
+                az webapp deploy \
+                  --resource-group "$(resourceGroupName)" \
+                  --name "$(apiAppName)" \
+                  --src-path "$(Pipeline.Workspace)/drop/api.zip" \
+                  --type zip
+
+  - stage: Deploy_Web
+    displayName: 'Deploy web app'
+    dependsOn:
+      - Deploy_Infrastructure
+      - Deploy_API
+    variables:
+      webAppName: $[ stageDependencies.Deploy_Infrastructure.DeployBicep.outputs['CaptureOutputs.webAppName'] ]
+    jobs:
+      - job: DeployWebPackage
+        displayName: 'Deploy frontend package to App Service'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - task: DownloadBuildArtifacts@1
+            displayName: 'Download build artifacts'
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'drop'
+              downloadPath: '$(Pipeline.Workspace)'
+
+          - task: AzureCLI@2
+            displayName: 'Deploy frontend to App Service'
+            inputs:
+              azureSubscription: '$(azureServiceConnection)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                set -euo pipefail
+                if [ -n "$(deploymentSubscriptionId)" ]; then
+                  az account set --subscription "$(deploymentSubscriptionId)"
+                fi
+
+                az webapp deploy \
+                  --resource-group "$(resourceGroupName)" \
+                  --name "$(webAppName)" \
+                  --src-path "$(Pipeline.Workspace)/drop/web.zip" \
+                  --type zip

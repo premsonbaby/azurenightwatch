@@ -1,0 +1,24 @@
+// Publicly exposed resources
+resources
+| where type in~ ('microsoft.network/publicipaddresses', 'microsoft.compute/virtualmachines')
+| extend hasPublicIp = isnotempty(properties.ipAddress)
+| where hasPublicIp
+| project subscriptionId, resourceGroup, name, type, location
+
+// NSG Any/Any rules
+resources
+| where type =~ 'microsoft.network/networksecuritygroups'
+| mv-expand rule = properties.securityRules
+| where tostring(rule.properties.sourceAddressPrefix) == '*' and tostring(rule.properties.destinationPortRange) == '*'
+| project subscriptionId, resourceGroup, nsgName = name, ruleName = tostring(rule.name), access = tostring(rule.properties.access), direction = tostring(rule.properties.direction)
+
+// Unused public IPs
+resources
+| where type =~ 'microsoft.network/publicipaddresses'
+| where isnull(properties.ipConfiguration)
+| project subscriptionId, resourceGroup, name, location
+
+// Resources without tags
+resources
+| where isnull(tags) or array_length(bag_keys(tags)) == 0
+| project subscriptionId, resourceGroup, name, type, location

@@ -1,0 +1,6 @@
+{
+  "NightWatch.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "c:\\Users\\pbaby\\source\\repos\\NightWatch\\src\\backend\\NightWatch.Api",
+  "NightWatch.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "c:\\Users\\pbaby\\source\\repos\\NightWatch\\src\\backend\\NightWatch.Application",
+  "NightWatch.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "c:\\Users\\pbaby\\source\\repos\\NightWatch\\src\\backend\\NightWatch.Domain",
+  "NightWatch.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "c:\\Users\\pbaby\\source\\repos\\NightWatch\\src\\backend\\NightWatch.Infrastructure"
+}
