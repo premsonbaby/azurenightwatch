@@ -21,9 +21,14 @@ services:
       context: src/frontend/nightwatch-web
       dockerfile: Dockerfile
       args:
-        - VITE_API_BASE_URL=http://localhost:5000
+        # Empty → frontend uses same-origin API calls, which nginx proxies to
+        # the api container. This makes the app work in Codespaces (where
+        # localhost:5000 is not reachable from the browser) and locally.
+        - VITE_API_BASE_URL=
     ports:
       - "5173:80"
+    depends_on:
+      - api
     networks:
       - nightwatch
 

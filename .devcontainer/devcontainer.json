@@ -1,0 +1,30 @@
+{
+  "name": "NightWatch",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postStartCommand": "docker compose up --build -d",
+  "forwardPorts": [5173, 5000],
+  "portsAttributes": {
+    "5173": {
+      "label": "NightWatch Web",
+      "onAutoForward": "openBrowserOnce"
+    },
+    "5000": {
+      "label": "NightWatch API",
+      "onAutoForward": "silent"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}
