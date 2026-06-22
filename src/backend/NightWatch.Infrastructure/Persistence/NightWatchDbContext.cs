@@ -15,6 +15,8 @@ public sealed class NightWatchDbContext(DbContextOptions<NightWatchDbContext> op
     public DbSet<AlertThresholdEntity> AlertThresholds => Set<AlertThresholdEntity>();
     public DbSet<ThresholdBreachEntity> ThresholdBreaches => Set<ThresholdBreachEntity>();
     public DbSet<ActionItemEntity> ActionItems => Set<ActionItemEntity>();
+    public DbSet<EnvironmentReviewEntity> EnvironmentReviews => Set<EnvironmentReviewEntity>();
+    public DbSet<ReviewFindingEntity> ReviewFindings => Set<ReviewFindingEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -162,6 +164,45 @@ public sealed class NightWatchDbContext(DbContextOptions<NightWatchDbContext> op
             builder.Property(x => x.ResolutionNote).HasMaxLength(1024).IsRequired(false);
             builder.HasIndex(x => new { x.TenantId, x.Month });
             builder.HasIndex(x => new { x.TenantId, x.Status });
+        });
+
+        modelBuilder.Entity<EnvironmentReviewEntity>(builder =>
+        {
+            builder.ToTable("EnvironmentReviews");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Property(x => x.TenantId).HasMaxLength(128).IsRequired();
+            builder.Property(x => x.CustomerName).HasMaxLength(256).IsRequired();
+            builder.Property(x => x.ReviewDate).HasMaxLength(10).IsRequired();
+            builder.Property(x => x.ReviewedBy).HasMaxLength(256).IsRequired();
+            builder.Property(x => x.Status).HasMaxLength(32).IsRequired();
+            builder.Property(x => x.Scope).HasMaxLength(2048).IsRequired(false);
+            builder.Property(x => x.ExecutiveSummary).HasMaxLength(4000).IsRequired(false);
+            builder.Property(x => x.OverallMaturity).HasMaxLength(32).IsRequired(false);
+            builder.Property(x => x.CreatedAt).IsRequired();
+            builder.Property(x => x.UpdatedAt).IsRequired();
+            builder.HasMany(x => x.Findings).WithOne(x => x.Review).HasForeignKey(x => x.ReviewId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasIndex(x => x.TenantId);
+            builder.HasIndex(x => x.ReviewDate);
+        });
+
+        modelBuilder.Entity<ReviewFindingEntity>(builder =>
+        {
+            builder.ToTable("ReviewFindings");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Property(x => x.ReviewId).IsRequired();
+            builder.Property(x => x.Pillar).HasMaxLength(64).IsRequired();
+            builder.Property(x => x.Severity).HasMaxLength(32).IsRequired();
+            builder.Property(x => x.Title).HasMaxLength(256).IsRequired();
+            builder.Property(x => x.Description).HasMaxLength(4000).IsRequired();
+            builder.Property(x => x.Recommendation).HasMaxLength(4000).IsRequired();
+            builder.Property(x => x.Evidence).HasMaxLength(2048).IsRequired(false);
+            builder.Property(x => x.EffortEstimate).HasMaxLength(32).IsRequired(false);
+            builder.Property(x => x.Status).HasMaxLength(32).IsRequired();
+            builder.Property(x => x.LibraryRef).HasMaxLength(128).IsRequired(false);
+            builder.Property(x => x.CreatedAt).IsRequired();
+            builder.HasIndex(x => x.ReviewId);
         });
 
         modelBuilder.Entity<GlobalOperationsConfigEntity>(builder =>

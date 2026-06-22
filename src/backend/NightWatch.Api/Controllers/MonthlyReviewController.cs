@@ -4,7 +4,6 @@ using NightWatch.Application.Abstractions;
 using NightWatch.Application.Contracts;
 using NightWatch.Infrastructure.Abstractions;
 using System.Security.Claims;
-
 namespace NightWatch.Api.Controllers;
 
 [ApiController]
@@ -14,7 +13,8 @@ public sealed class MonthlyReviewController(
     IMonthlyReviewService reviewService,
     IEmailService emailService,
     IOperationsScopeService operationsScope,
-    ITenantRegistryService tenantRegistry) : ControllerBase
+    ITenantRegistryService tenantRegistry,
+    IInsightAggregatorService insightAggregator) : ControllerBase
 {
     [HttpGet("{tenantId}")]
     public async Task<IActionResult> GetReview(
@@ -136,6 +136,43 @@ public sealed class MonthlyReviewController(
             fileSizeKb = pdf.Length / 1024,
             sentAt = DateTimeOffset.UtcNow
         });
+    }
+
+    [HttpGet("{tenantId}/suggested-actions")]
+    public async Task<IActionResult> GetSuggestedActions(string tenantId, CancellationToken ct)
+    {
+        var insights = await insightAggregator.GetCriticalInsightsAsync();
+
+        static string MapCategory(string category) => category switch
+        {
+            "Security" => "Security",
+            "Cost" => "Cost",
+            "Performance" => "Performance",
+            "Reliability" => "Reliability",
+            "Governance" or "Compliance" => "Governance",
+            _ => "General"
+        };
+
+        static string MapPriority(SeverityLevel sev) => sev switch
+        {
+            SeverityLevel.Critical => "High",
+            SeverityLevel.High => "High",
+            SeverityLevel.Medium => "Medium",
+            _ => "Low"
+        };
+
+        var suggestions = insights
+            .Where(i => i.Severity <= SeverityLevel.Medium)
+            .Take(20)
+            .Select(i => new SuggestedActionDto(
+                i.Title,
+                i.Message,
+                MapPriority(i.Severity),
+                MapCategory(i.Category),
+                i.TargetPage))
+            .ToList();
+
+        return Ok(suggestions);
     }
 
     private static string BuildEmailBody(string name, string month) => $"""

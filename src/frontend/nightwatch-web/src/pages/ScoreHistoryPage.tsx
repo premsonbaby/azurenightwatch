@@ -34,6 +34,41 @@ function DeltaBadge({ value }: { value: number | null }) {
   );
 }
 
+function scoreAnnotation(label: string, _score: number, delta: number | null): string | null {
+  if (delta === null || Math.abs(delta) < 1) return null;
+  const dir = delta > 0 ? 'improved' : 'declined';
+  const amt = Math.abs(delta).toFixed(1);
+  const tips: Record<string, { up: string; down: string }> = {
+    Security: {
+      up: `Security posture ${dir} by ${amt}pts — likely from resolved Defender alerts or improved MFA coverage.`,
+      down: `Security declined ${amt}pts — check for new Defender recommendations, MFA gaps, or new privileged role assignments.`,
+    },
+    'Cost Efficiency': {
+      up: `Cost efficiency ${dir} by ${amt}pts — Reserved Instances, orphan clean-up, or budget adherence improvements.`,
+      down: `Cost declined ${amt}pts — review budget vs actual spend, new orphaned resources, or missing RI commitments.`,
+    },
+    Performance: {
+      up: `Performance ${dir} by ${amt}pts — possibly from right-sizing, auto-scale tuning, or reduced high-CPU incidents.`,
+      down: `Performance declined ${amt}pts — check for VMs at sustained high CPU, storage IOPS pressure, or slow database queries.`,
+    },
+    Reliability: {
+      up: `Reliability ${dir} by ${amt}pts — backup coverage improved or availability zone adoption increased.`,
+      down: `Reliability declined ${amt}pts — check backup coverage gaps, single-region deployments, or recent outage events.`,
+    },
+    Governance: {
+      up: `Governance ${dir} by ${amt}pts — tagging compliance improved or new Azure Policy assignments are taking effect.`,
+      down: `Governance declined ${amt}pts — check for non-compliant resources, missing tags, or new unmanaged subscriptions.`,
+    },
+    'Overall Health': {
+      up: `Overall score ${dir} by ${amt}pts across all pillars.`,
+      down: `Overall score declined ${amt}pts — review individual pillar scores below to identify the root cause.`,
+    },
+  };
+  const entry = tips[label];
+  if (!entry) return null;
+  return delta > 0 ? entry.up : entry.down;
+}
+
 function ScoreCard({ snap }: { snap: MonthlyHealthSnapshot }) {
   const rows = [
     { label: 'Overall Health',  score: snap.azureHealthScore,         delta: snap.azureHealthDelta },
@@ -43,6 +78,8 @@ function ScoreCard({ snap }: { snap: MonthlyHealthSnapshot }) {
     { label: 'Reliability',     score: snap.reliabilityScore,          delta: snap.reliabilityDelta },
     { label: 'Governance',      score: snap.governanceComplianceScore, delta: snap.governanceDelta },
   ];
+
+  const notableChanges = rows.filter(r => r.delta !== null && Math.abs(r.delta) >= 3);
 
   const overallColor =
     snap.azureHealthScore >= 80 ? 'border-emerald-500/30 bg-emerald-500/8' :
@@ -65,6 +102,20 @@ function ScoreCard({ snap }: { snap: MonthlyHealthSnapshot }) {
           </div>
         ))}
       </div>
+      {notableChanges.length > 0 && (
+        <div className="mt-3 space-y-1.5 border-t border-white/10 pt-3">
+          {notableChanges.map(r => {
+            const note = scoreAnnotation(r.label, r.score, r.delta);
+            if (!note) return null;
+            const isDown = (r.delta ?? 0) < 0;
+            return (
+              <p key={r.label} className={`text-[10px] leading-relaxed ${isDown ? 'text-rose-300/80' : 'text-emerald-300/80'}`}>
+                {isDown ? '↓ ' : '↑ '}{note}
+              </p>
+            );
+          })}
+        </div>
+      )}
       {snap.subscriptionCount > 0 && (
         <p className="mt-3 text-[10px] text-zinc-500">{snap.subscriptionCount} subscription{snap.subscriptionCount !== 1 ? 's' : ''}</p>
       )}

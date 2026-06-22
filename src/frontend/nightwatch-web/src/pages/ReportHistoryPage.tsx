@@ -47,6 +47,21 @@ export function ReportHistoryPage() {
   const [error, setError] = useState<string | null>(null);
   const [tenantFilter, setTenantFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
+  const [resendingId, setResendingId] = useState<number | null>(null);
+  const [resendSuccess, setResendSuccess] = useState<number | null>(null);
+
+  async function resendReport(row: ReportSentLog) {
+    setResendingId(row.id);
+    setResendSuccess(null);
+    try {
+      await nightWatchClient.resendReport(row.tenantId, row.id);
+      setResendSuccess(row.id);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Resend failed.');
+    } finally {
+      setResendingId(null);
+    }
+  }
 
   useEffect(() => {
     nightWatchClient.getAllReportHistory(200)
@@ -194,6 +209,7 @@ export function ReportHistoryPage() {
                   <th className="pb-2 pr-4 text-xs font-medium uppercase tracking-wider text-zinc-500">Recipients</th>
                   <th className="pb-2 pr-4 text-xs font-medium uppercase tracking-wider text-zinc-500">Size</th>
                   <th className="pb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">Status</th>
+                  <th className="pb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/10">
@@ -209,10 +225,23 @@ export function ReportHistoryPage() {
                     <td className="py-3 pr-4"><TypeChip type={row.reportType} /></td>
                     <td className="py-3 pr-4 text-xs">{row.recipientCount}</td>
                     <td className="py-3 pr-4 text-xs text-zinc-400">{formatBytes(row.fileSizeBytes)}</td>
-                    <td className="py-3">
+                    <td className="py-3 pr-4">
                       <StatusChip status={row.status} />
                       {row.errorMessage && (
                         <div className="mt-0.5 text-xs text-red-400">{row.errorMessage}</div>
+                      )}
+                    </td>
+                    <td className="py-3">
+                      {resendSuccess === row.id ? (
+                        <span className="text-xs text-emerald-400">Sent ✓</span>
+                      ) : (
+                        <button
+                          onClick={() => resendReport(row)}
+                          disabled={resendingId === row.id}
+                          className="rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 text-xs text-cyan-300 hover:bg-cyan-500/20 transition disabled:opacity-50"
+                        >
+                          {resendingId === row.id ? 'Sending…' : 'Resend'}
+                        </button>
                       )}
                     </td>
                   </tr>

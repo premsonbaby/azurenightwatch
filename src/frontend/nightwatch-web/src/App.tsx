@@ -177,6 +177,18 @@ const ReportSchedulePage = lazy(() =>
 const ScoreHistoryPage = lazy(() =>
   import('./pages/ScoreHistoryPage').then((module) => ({ default: module.ScoreHistoryPage })),
 );
+const IdentityAccessReviewPage = lazy(() =>
+  import('./pages/IdentityAccessReviewPage').then((module) => ({ default: module.IdentityAccessReviewPage })),
+);
+const NetworkSecurityReviewPage = lazy(() =>
+  import('./pages/NetworkSecurityReviewPage').then((module) => ({ default: module.NetworkSecurityReviewPage })),
+);
+const CAFAlignmentPage = lazy(() =>
+  import('./pages/CAFAlignmentPage').then((module) => ({ default: module.CAFAlignmentPage })),
+);
+const EnvironmentReviewPage = lazy(() =>
+  import('./pages/EnvironmentReviewPage').then((module) => ({ default: module.EnvironmentReviewPage })),
+);
 
 function TenantSwitcher({ onSwitch }: { onSwitch: () => void }) {
   const { activeTenantName, switchTenant, isHomeTenant } = useTenant();
@@ -546,6 +558,10 @@ function AppShell() {
             <Route path="/report-history" element={<ReportHistoryPage />} />
             <Route path="/report-schedule" element={<ReportSchedulePage />} />
             <Route path="/score-history" element={<ScoreHistoryPage refreshTick={refreshTick} />} />
+            <Route path="/identity-access-review" element={<IdentityAccessReviewPage refreshTick={refreshTick} />} />
+            <Route path="/network-security-review" element={<NetworkSecurityReviewPage refreshTick={refreshTick} />} />
+            <Route path="/caf-alignment" element={<CAFAlignmentPage refreshTick={refreshTick} />} />
+            <Route path="/environment-review" element={<EnvironmentReviewPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>

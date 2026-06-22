@@ -55,3 +55,10 @@ public sealed record MonthlyReviewDto(
 public sealed record MonthlyReviewSendRequest(
     IReadOnlyList<string> Recipients,
     bool IncludeActionItems);
+
+public sealed record SuggestedActionDto(
+    string Title,
+    string Description,
+    string Priority,
+    string Category,
+    string TargetPage);

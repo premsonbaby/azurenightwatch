@@ -206,6 +206,81 @@ export interface HealthSnapshotHistory {
   totalMonths: number;
 }
 
+// ── Environment Review types ─────────────────────────────────────────────────
+export interface EnvironmentReviewSummary {
+  id: number;
+  tenantId: string;
+  customerName: string;
+  reviewDate: string;
+  reviewedBy: string;
+  status: string;
+  overallMaturity: string | null;
+  findingCount: number;
+  criticalCount: number;
+  highCount: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ReviewFinding {
+  id: number;
+  reviewId: number;
+  pillar: string;
+  severity: string;
+  title: string;
+  description: string;
+  recommendation: string;
+  evidence: string | null;
+  effortEstimate: string | null;
+  status: string;
+  libraryRef: string | null;
+  createdAt: string;
+}
+
+export interface EnvironmentReviewDetail extends EnvironmentReviewSummary {
+  scope: string | null;
+  executiveSummary: string | null;
+  findings: ReviewFinding[];
+}
+
+export interface CreateEnvironmentReviewRequest {
+  customerName: string;
+  reviewDate: string;
+  reviewedBy: string;
+  scope?: string;
+  executiveSummary?: string;
+  overallMaturity?: string;
+}
+
+export interface CreateReviewFindingRequest {
+  pillar: string;
+  severity: string;
+  title: string;
+  description: string;
+  recommendation: string;
+  evidence?: string;
+  effortEstimate?: string;
+  libraryRef?: string;
+}
+
+export interface FindingLibraryItem {
+  ref: string;
+  pillar: string;
+  severity: string;
+  title: string;
+  description: string;
+  recommendation: string;
+  effortEstimate: string | null;
+}
+
+export interface SuggestedAction {
+  title: string;
+  description: string;
+  priority: string;
+  category: string;
+  targetPage: string;
+}
+
 function tenantHeader(): Record<string, string> {
   return _activeTenantId !== 'global' ? { 'X-Tenant-Id': _activeTenantId } : {};
 }
@@ -609,6 +684,48 @@ export const nightWatchClient = {
     const a = document.createElement('a');
     a.href = url;
     a.download = `nightwatch-audit-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  },
+
+  // Report history — resend
+  resendReport: (tenantId = _activeTenantId, logId: number) =>
+    postToApi<{ sent: boolean; recipients: number; fileSizeKb: number; sentAt: string }>(
+      `/api/report-schedule/${encodeURIComponent(tenantId)}/resend/${logId}`, {}),
+
+  // Monthly review — suggested actions from insights
+  getSuggestedActions: (tenantId = _activeTenantId) =>
+    getFromApi<SuggestedAction[]>(`/api/monthly-review/${encodeURIComponent(tenantId)}/suggested-actions`),
+
+  // Environment review
+  getEnvironmentReviews: (tenantId = _activeTenantId) =>
+    getFromApi<EnvironmentReviewSummary[]>(`/api/environment-review/${encodeURIComponent(tenantId)}`),
+  getEnvironmentReview: (tenantId = _activeTenantId, id: number) =>
+    getFromApi<EnvironmentReviewDetail>(`/api/environment-review/${encodeURIComponent(tenantId)}/${id}`),
+  createEnvironmentReview: (tenantId = _activeTenantId, req: CreateEnvironmentReviewRequest) =>
+    postToApi<EnvironmentReviewDetail>(`/api/environment-review/${encodeURIComponent(tenantId)}`, req),
+  updateEnvironmentReview: (tenantId = _activeTenantId, id: number, req: Partial<CreateEnvironmentReviewRequest & { status: string }>) =>
+    putToApi<EnvironmentReviewDetail>(`/api/environment-review/${encodeURIComponent(tenantId)}/${id}`, req),
+  deleteEnvironmentReview: (tenantId = _activeTenantId, id: number) =>
+    deleteFromApi(`/api/environment-review/${encodeURIComponent(tenantId)}/${id}`),
+  addReviewFinding: (tenantId = _activeTenantId, reviewId: number, req: CreateReviewFindingRequest) =>
+    postToApi<ReviewFinding>(`/api/environment-review/${encodeURIComponent(tenantId)}/${reviewId}/findings`, req),
+  updateReviewFinding: (tenantId = _activeTenantId, reviewId: number, findingId: number, req: Partial<CreateReviewFindingRequest & { status: string }>) =>
+    putToApi<ReviewFinding>(`/api/environment-review/${encodeURIComponent(tenantId)}/${reviewId}/findings/${findingId}`, req),
+  deleteReviewFinding: (tenantId = _activeTenantId, reviewId: number, findingId: number) =>
+    deleteFromApi(`/api/environment-review/${encodeURIComponent(tenantId)}/${reviewId}/findings/${findingId}`),
+  getFindingLibrary: () =>
+    getFromApi<FindingLibraryItem[]>('/api/environment-review/library'),
+  downloadEnvironmentReviewPdf: async (tenantId = _activeTenantId, reviewId: number, customerName: string): Promise<void> => {
+    const token = await acquireApiToken();
+    const headers: Record<string, string> = token ? { Authorization: `Bearer ${token}` } : {};
+    const res = await fetch(`${resolvedApiBaseUrl}/api/environment-review/${encodeURIComponent(tenantId)}/${reviewId}/pdf`, { headers });
+    if (!res.ok) throw new Error(`Environment review PDF failed: ${res.status}`);
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `NightWatch-EnvironmentReview-${customerName.replace(/\s+/g, '-')}-${new Date().toISOString().slice(0, 10)}.pdf`;
     a.click();
     URL.revokeObjectURL(url);
   },

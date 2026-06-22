@@ -124,6 +124,7 @@ public static class DependencyInjection
         services.AddScoped<IAlertThresholdService, AlertThresholdService>();
         services.AddScoped<IHealthSnapshotService, HealthSnapshotService>();
         services.AddScoped<IMonthlyReviewService, MonthlyReviewService>();
+        services.AddScoped<EnvironmentReviewService>();
 
         services.AddScoped<IInsightPlugin, TechnicalDebtPlugin>();
 

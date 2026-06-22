@@ -8,6 +8,7 @@ import type {
   CreateActionItemRequest,
   UpdateActionItemRequest,
 } from '../types/dashboard';
+import type { SuggestedAction } from '../api/client';
 
 const PRIORITY_COLORS: Record<string, string> = {
   High: 'bg-rose-500/20 text-rose-300 border-rose-500/30',
@@ -277,6 +278,9 @@ export function MonthlyReviewPage({ refreshTick }: MonthlyReviewPageProps) {
   const [actionFilter, setActionFilter] = useState<'All' | 'Open' | 'Resolved'>('All');
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadMsg, setDownloadMsg] = useState<string | null>(null);
+  const [suggestions, setSuggestions] = useState<SuggestedAction[] | null>(null);
+  const [loadingSuggestions, setLoadingSuggestions] = useState(false);
+  const [addingFromSuggestion, setAddingFromSuggestion] = useState<string | null>(null);
 
   const load = useCallback(() => {
     setLoading(true);
@@ -301,6 +305,27 @@ export function MonthlyReviewPage({ refreshTick }: MonthlyReviewPageProps) {
       setIsDownloading(false);
       setTimeout(() => setDownloadMsg(null), 4000);
     }
+  }
+
+  async function loadSuggestions() {
+    if (suggestions !== null) { setSuggestions(null); return; }
+    setLoadingSuggestions(true);
+    try {
+      const items = await nightWatchClient.getSuggestedActions(tenantId);
+      setSuggestions(items);
+    } catch {}
+    setLoadingSuggestions(false);
+  }
+
+  async function addSuggestion(s: SuggestedAction) {
+    if (!review) return;
+    setAddingFromSuggestion(s.title);
+    try {
+      const req: CreateActionItemRequest = { title: s.title, description: s.description, priority: s.priority, category: s.category };
+      await nightWatchClient.createActionItem(tenantId, req, review.month);
+      load();
+    } catch {}
+    setAddingFromSuggestion(null);
   }
 
   const filteredItems = review?.actionItems.filter(item => {
@@ -500,8 +525,51 @@ export function MonthlyReviewPage({ refreshTick }: MonthlyReviewPageProps) {
             >
               + Add
             </button>
+            <button
+              type="button"
+              onClick={loadSuggestions}
+              disabled={loadingSuggestions}
+              className="rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 text-xs font-medium text-cyan-300 hover:bg-cyan-500/20 transition disabled:opacity-50"
+            >
+              {loadingSuggestions ? 'Loading…' : suggestions !== null ? 'Hide Suggestions' : '✨ Suggest from Insights'}
+            </button>
           </div>
         </div>
+
+        {/* Auto-suggestions panel */}
+        {suggestions !== null && suggestions.length > 0 && (
+          <div className="mb-4 rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-4">
+            <p className="mb-3 text-xs font-semibold text-cyan-300 uppercase tracking-wide">Suggested Action Items — from live insights</p>
+            <div className="space-y-2">
+              {suggestions.map(s => (
+                <div key={s.title} className="flex items-start gap-3 rounded-lg bg-slate-800/50 p-3">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${
+                        s.priority === 'High' ? 'bg-red-500/20 text-red-300' : s.priority === 'Medium' ? 'bg-amber-500/20 text-amber-300' : 'bg-slate-600/40 text-slate-400'
+                      }`}>{s.priority}</span>
+                      <span className="text-[10px] text-slate-500">{s.category}</span>
+                    </div>
+                    <p className="text-xs font-semibold text-slate-200">{s.title}</p>
+                    <p className="mt-0.5 text-[11px] text-slate-400 line-clamp-2">{s.description}</p>
+                  </div>
+                  <button
+                    onClick={() => addSuggestion(s)}
+                    disabled={addingFromSuggestion === s.title}
+                    className="shrink-0 rounded-lg border border-emerald-400/30 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300 hover:bg-emerald-500/20 transition disabled:opacity-50"
+                  >
+                    {addingFromSuggestion === s.title ? 'Adding…' : '+ Add'}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        {suggestions !== null && suggestions.length === 0 && (
+          <div className="mb-4 rounded-xl border border-slate-500/20 bg-slate-500/5 p-3 text-xs text-slate-400">
+            No active insights to suggest right now. All systems look healthy!
+          </div>
+        )}
 
         {filteredItems.length === 0 ? (
           <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 text-sm text-emerald-400">
